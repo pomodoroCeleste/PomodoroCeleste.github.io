@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vuoi uscire con me?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: pink;
+            background-color: #FFD1DC; /* Rosa pastello */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         .container {
             text-align: center;
@@ -20,6 +21,7 @@
         }
         .question {
             font-size: 2em;
+            font-weight: 700;
             margin-bottom: 20px;
         }
         .buttons {
@@ -32,21 +34,25 @@
             margin: 0 10px;
             cursor: pointer;
             position: relative;
+            border: none;
+            border-radius: 5px;
         }
         #yes {
             background-color: lightgreen;
+            transition: background-color 0.3s;
+        }
+        #yes:hover {
+            background-color: green;
+            color: white;
         }
         #no {
             background-color: lightcoral;
-        }
-        #no:hover {
-            position: absolute;
-            top: calc(50% + (Math.random() * 200 - 100px));
-            left: calc(50% + (Math.random() * 200 - 100px));
+            transition: background-color 0.3s;
         }
         .penguin {
             display: none;
             margin-top: 20px;
+            font-size: 1.5em;
         }
         .mascot {
             position: absolute;
@@ -61,8 +67,8 @@
     <div class="container">
         <div class="question">Vuoi uscire con me?</div>
         <div class="buttons">
-            <div id="yes" class="button">Sì</div>
-            <div id="no" class="button">No</div>
+            <button id="yes" class="button">Sì</button>
+            <button id="no" class="button">No</button>
         </div>
         <div id="penguin" class="penguin">🎉 Il pinguino esulta di gioia!</div>
         <div class="mascot">🐧</div>
@@ -74,10 +80,12 @@
         });
 
         document.getElementById('no').addEventListener('mouseover', function() {
-            this.style.top = Math.random() * (window.innerHeight - this.clientHeight) + 'px';
-            this.style.left = Math.random() * (window.innerWidth - this.clientWidth) + 'px';
+            const noButton = this;
+            const maxX = window.innerWidth - noButton.clientWidth;
+            const maxY = window.innerHeight - noButton.clientHeight;
+            noButton.style.top = Math.random() * maxY + 'px';
+            noButton.style.left = Math.random() * maxX + 'px';
         });
     </script>
 </body>
 </html>
-
