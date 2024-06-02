@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuoi uscire con me?</title>
+    <style>
+        body {
+            background-color: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .question {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 1.5em;
+            margin: 0 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        #yes {
+            background-color: lightgreen;
+        }
+        #no {
+            background-color: lightcoral;
+        }
+        #no:hover {
+            position: absolute;
+            top: calc(50% + (Math.random() * 200 - 100px));
+            left: calc(50% + (Math.random() * 200 - 100px));
+        }
+        .penguin {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="question">Vuoi uscire con me?</div>
+        <div class="buttons">
+            <div id="yes" class="button">Sì</div>
+            <div id="no" class="button">No</div>
+        </div>
+        <div id="penguin" class="penguin">🎉</div>
+    </div>
+    <script>
+        document.getElementById('yes').addEventListener('click', function() {
+            document.getElementById('penguin').style.display = 'block';
+            document.getElementById('penguin').textContent = '🎉 Il pinguino esulta di gioia!';
+        });
+
+        document.getElementById('no').addEventListener('mouseover', function() {
+            this.style.top = Math.random() * (window.innerHeight - this.clientHeight) + 'px';
+            this.style.left = Math.random() * (window.innerWidth - this.clientWidth) + 'px';
+        });
+    </script>
+</body>
+</html>
